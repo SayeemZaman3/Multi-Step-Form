@@ -9,7 +9,156 @@
 </head>
 
 <body>
-  
+  <div id="container">
+    <!-- Steps -->
+    <div id="steps-container">
+      <div class="progress" id="progress1">
+        <h4>1</h4>
+        <p>STEP 1</p>
+        <h4 class="step-name">YOUR INFO</h4>
+      </div>
+      <div class="progress" id="progress2">
+        <h4>2</h4>
+        <p>STEP 2</p>
+        <h4 class="step-name">SELECT PLANS</h4>
+      </div>
+      <div class="progress" id="progress3">
+        <h4>3</h4>
+        <p>STEP 3</p>
+        <h4 class="step-name">ADD-ONS</h4>
+      </div>
+      <div class="progress" id="progress 4">
+        <h4>4</h4>
+        <p>STEP 4</p>
+        <h4 class="step-name">SUMMARY</h4>
+      </div>
+    </div>
+    
+    <!-- Form -->
+    <div id="form">
+      <!-- Main -->
+      <form>
+        <!-- Step 1 -->
+        <fieldset class="step">
+          <h1>Personal Info</h1>
+          <h4>Please provide your name, email address, and phone number.</h4>
+          
+          <label for="name">Name</label>
+          <p class="error"></p>
+          <input type="text" id="name" placeholder="e.g. Stephen King">
+          
+          <label for="email">Email Address</label>
+          <p class="error"></p>
+          <input type="email" id="email" placeholder="e.g. stephenking@lorem.com">
+          
+          <label for="phone">Phone</label>
+          <p class="error"></p>
+          <input type="phone" id="phone" placeholder="e.g. +1 234 567 890">
+        </fieldset>
+        
+        <!-- Step 2 -->
+        <fieldset class="step">
+          <h1>Select your plan</h1>
+          <h4>You have the option of monthly or yearly billing.</h4>
+          
+          <div id="plan">
+            <div class="radio">
+              <img src="" alt="" class="icon">
+              <input type="radio" id="Arcade">
+              <h4>Arcade</h4>
+              <h5>$9/mo</h5>
+            </div>
+            <div class="radio">
+              <img src="" alt="" class="icon">
+              <input type="radio" id="Advanced">
+              <h4>Advanced</h4>
+              <h5>$12/mo</h5>
+            </div>
+            <div class="radio">
+              <img src="" alt="" class="icon">
+              <input type="radio" id="Pro">
+              <h4>Pro</h4>
+              <h5>$15/mo</h5>
+            </div>
+          </div>
+          
+          <div id="billing">
+            <label for="bill">Monthly</label>
+            <input type="checkbox" name="bill" id="bill">
+            <label for="bill">Yearly</label>
+          </div>
+        </fieldset>
+        
+        <!-- Step 3 -->
+        <fieldset class="step">
+          <h1>Pick add-ons</h1>
+          <h4>Add-ons help enhance your gaming experience.</h4>
+          
+          <div id="checkboxes">
+            <div class="checkbox">
+              <input type="checkbox" id="online-service">
+              <h4>Online Service</h4>
+              <p>Access to multiplayer games</p>
+              <h4>+$1/mo</h4>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox" id="larger-storage">
+              <h4>Larger Storage</h4>
+              <p>Extra 1TB of cloud save</p>
+              <h4>+$2/mo</h4>
+            </div>
+            <div class="checkbox">
+              <input type="checkbox"  id="online-service">
+              <h4>Customizable Profile</h4>
+              <p>Custom theme on your profile</p>
+              <h4>+$2/mo</h4>
+            </div>
+          </div>
+        </fieldset>
+        
+        <!-- Step 4 -->
+        <fieldset class="step">
+          <h1>Finishing Up</h1>
+          <h4>Double-check everything is OK before continuing</h4>
+          
+          <div class="info">
+            <div>
+              <div class="plan-info">
+                <h4 class="planType">Arcade</h4>
+                <h4 class="billType">(Monthly)</h4>
+                <a href="change">change</a>
+              </div>
+              <hr>
+              <div id="addon-info">
+                <div id="addon1">
+                  <p>Online service</p>
+                  <p>+$1/mo</p>
+                </div>
+                <div id="addon2">
+                  <p>Larger storage</p>
+                  <p>+$2/mo</p>
+                </div>
+                <div id="addon3">
+                  <p>Customizable Profile</p>
+                  <p>+$2/mo</p>
+                </div>
+              </div>
+            </div>
+            <div id="total">
+              <p>Total (per month)</p>
+              <h3 id="total-price"></h3>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+      
+      <!-- Buttons -->
+      <div>
+        <button id="back">Go Back</button>
+        <button id="next">Next</button>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
