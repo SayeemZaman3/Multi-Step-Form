@@ -33,11 +33,13 @@ body{
 }
 #container{
   background: #fff;
-  width: 70%;
+  position: relative;
+  width: 72%;
   min-height: 450px;
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: 1fr;
+  grid-column-gap: 32px;
   padding: 16px;
   border-radius: 8px;
   box-shadow: 2px 2px 12px var(--purple200);
@@ -55,6 +57,7 @@ body{
   margin: 0;
   padding: 32px;
   border-radius: 8px;
+  grid-row: span 2;
 }
 .progress{
   display: grid;
@@ -86,11 +89,88 @@ body{
 
 
 /* Form */
+button, input{
+  cursor: pointer;
+}
 .step{
   display: none;
+  border: none;
+  padding: 16px 32px;
 }
+#step1{
+  display: block;
+}
+.step h1{
+  margin: 8px 0;
+  font-family: Ubuntu-bold, Arial, Helvetica, sans-serif;
+  color: var(--blue950);
+}
+.step p{
+  font-size: 14px;
+  color: var(--grey500);
+}
+label{
+  font-family: Ubuntu-med;
+  font-size: 14px;
+}
+
+
+/* Step 1 */
+#step1 .subhead{
+  margin-bottom: 24px;
+}
+.field{
+  color: var(--blue950);
+  padding: 8px 0;
+  display: grid;
+  gap: 4px;
+}
+.field input{
+  width: 95%;
+  height: 32px;
+  border-radius: 4px;
+  border: 1px solid var(--purple200);
+  color: var(--blue950);
+  padding: 0 12px;
+  font-family: Ubuntu-med;
+}
+.field input:focus{
+  border: 1px solid var(--purple600);
+  outline: none;
+}
+.field.error input{
+  border: 1px solid var(--red500);
+}
+.error{
+  color: var(--red500);
+}
+
 
 /* Buttons */
 #nav{
-  display: none;
+  display: flex;
+  position: absolute;
+  bottom: 32px;
+  right: 48px;
+  width: 52%;
+  font-family: Ubuntu-reg;
+}
+#nav button{
+  padding: 10px 16px;
+  font-size: 16px;
+}
+#next{
+  margin-left: auto;
+  background: var(--blue950);
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+}
+#back{
+  background: none;
+  border: none;
+  color: var(--grey500);
+}
+#back:hover{
+  color: var(--blue950);
 }

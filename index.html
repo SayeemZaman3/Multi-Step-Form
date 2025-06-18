@@ -38,29 +38,33 @@
     <!-- Form -->
     <div id="form">
       <!-- Main -->
-      <form>
+      <form novalidate>
         <!-- Step 1 -->
-        <fieldset class="step">
-          <h1>Personal Info</h1>
-          <h4>Please provide your name, email address, and phone number.</h4>
+        <fieldset class="step" id="step1">
+          <h1 class="head">Personal Info</h1>
+          <p class="subhead">Please provide your name, email address, and phone number.</p>
           
-          <label for="name">Name</label>
-          <p class="error"></p>
-          <input type="text" id="name" placeholder="e.g. Stephen King">
-          
-          <label for="email">Email Address</label>
-          <p class="error"></p>
-          <input type="email" id="email" placeholder="e.g. stephenking@lorem.com">
-          
-          <label for="phone">Phone</label>
-          <p class="error"></p>
-          <input type="phone" id="phone" placeholder="e.g. +1 234 567 890">
+          <div class="field">
+            <label for="name">Name</label>
+            <p class="error"></p>
+            <input type="text" id="name" placeholder="e.g. Stephen King">
+          </div>
+          <div class="field">
+            <label for="email">Email Address</label>
+            <p class="error"></p>
+            <input type="email" id="email" placeholder="e.g. stephenking@lorem.com">
+          </div>
+          <div class="field">
+            <label for="phone">Phone Number</label>
+            <p class="error"></p>
+            <input type="tel" id="phone" placeholder="e.g. +1 234 567 890">
+          </div>
         </fieldset>
         
         <!-- Step 2 -->
-        <fieldset class="step">
-          <h1>Select your plan</h1>
-          <h4>You have the option of monthly or yearly billing.</h4>
+        <fieldset class="step" id="step2">
+          <h1 class="head">Select your plan</h1>
+          <p class="subhead">You have the option of monthly or yearly billing.</p>
           
           <div id="plan">
             <div class="radio">
@@ -91,9 +95,9 @@
         </fieldset>
         
         <!-- Step 3 -->
-        <fieldset class="step">
-          <h1>Pick add-ons</h1>
-          <h4>Add-ons help enhance your gaming experience.</h4>
+        <fieldset class="step" id="step3">
+          <h1 class="head">Pick add-ons</h1>
+          <p class="subhead">Add-ons help enhance your gaming experience.</p>
           
           <div id="checkboxes">
             <div class="checkbox">
@@ -118,9 +122,9 @@
         </fieldset>
         
         <!-- Step 4 -->
-        <fieldset class="step">
-          <h1>Finishing Up</h1>
-          <h4>Double-check everything is OK before continuing</h4>
+        <fieldset class="step" id="step4">
+          <h1 class="head">Finishing Up</h1>
+          <p class="subhead">Double-check everything is OK before continuing</p>
           
           <div class="info">
             <div>
@@ -151,13 +155,13 @@
             </div>
           </div>
         </fieldset>
-      </form>
-      
       <!-- Buttons -->
       <div id="nav">
         <button id="back">Go Back</button>
-        <button id="next">Next</button>
+        <button id="next" type="submit">Next Step</button>
       </div>
+      </form>
+      
     </div>
   </div>
 </body>
