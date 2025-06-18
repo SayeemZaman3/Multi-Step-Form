@@ -30,6 +30,7 @@ body{
   min-height: 100dvh;
   background: var(--blue100);
   font-family: Ubuntu-reg;
+  -webkit-tap-highlight-color: transparent;
 }
 #container{
   background: #fff;
@@ -97,8 +98,8 @@ button, input{
   border: none;
   padding: 16px 32px;
 }
-#step1{
-  display: block;
+#step2{
+  display: block; /*  Temp */
 }
 .step h1{
   margin: 8px 0;
@@ -113,12 +114,42 @@ label{
   font-family: Ubuntu-med;
   font-size: 14px;
 }
+.subhead{
+  margin-bottom: 32px;
+  font-weight: 400;
+}
 
+/* Buttons */
+#nav{
+  display: flex;
+  position: absolute;
+  bottom: 32px;
+  right: 48px;
+  width: 52%;
+}
+#nav button{
+  padding: 10px 16px;
+  font-size: 16px;
+  font-family: Ubuntu-reg;
+  font-weight: 400;
+}
+#next{
+  margin-left: auto;
+  background: var(--blue950);
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+}
+#back{
+  background: none;
+  border: none;
+  color: var(--grey500);
+}
+#back:hover{
+  color: var(--blue950);
+}
 
 /* Step 1 */
-#step1 .subhead{
-  margin-bottom: 24px;
-}
 .field{
   color: var(--blue950);
   padding: 8px 0;
@@ -145,32 +176,104 @@ label{
   color: var(--red500);
 }
 
-
-/* Buttons */
-#nav{
-  display: flex;
-  position: absolute;
-  bottom: 32px;
-  right: 48px;
-  width: 52%;
+/* Step 2 */
+/* Plan */
+#plan{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+.radio .content{
+  border: 1px solid var(--grey500);
+  border-radius: 8px;
+  padding: 12px;
+}
+input[type="radio"]:checked + .content{
+  border-color: var(--purple600);
+  background: var(--blue50);
+}
+.radio svg{
+  width: 32px;
+  margin-bottom: 32px;
+}
+.radio h4{
+  margin: 4px 0;
+  font-family: Ubuntu-med;
+  font-weight: 700;
+  color: var(--blue950);
+}
+.radio h5{
   font-family: Ubuntu-reg;
+  font-weight: 400;
+  margin: 2px 0;
 }
-#nav button{
-  padding: 10px 16px;
-  font-size: 16px;
+/* Billing */
+#billing{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--blue50);
+  padding: 8px;
+  margin-top: 32px;
 }
-#next{
-  margin-left: auto;
-  background: var(--blue950);
-  border: none;
-  color: #fff;
-  border-radius: 4px;
-}
-#back{
-  background: none;
-  border: none;
+#billing label{
   color: var(--grey500);
 }
-#back:hover{
+#billing label:is(:hover, :focus){
   color: var(--blue950);
+}
+/* Switch is From Uiverse.io by TimTrayler
+There was no switch button in the original assets
+I made some changes to match the design*/
+.switch {
+ --secondary-container: var(--blue950);
+ --primary: #fff;
+ font-size: 17px;
+ position: relative;
+ display: inline-block;
+ width: 3.7em;
+ height: 1.8em;
+ transform: scale(0.5);
+ margin: 0;
+}
+.switch input {
+ display: none;
+ opacity: 0;
+ width: 0;
+ height: 0;
+}
+.slider {
+ position: absolute;
+ cursor: pointer;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ background-color: #fff;
+ transition: .2s;
+ border-radius: 30px;
+}
+.slider:before {
+ position: absolute;
+ content: "";
+ height: 1.4em;
+ width: 1.4em;
+ border-radius: 20px;
+ left: 0.2em;
+ bottom: 0.2em;
+ background-color: var(--blue950);
+ transition: .4s;
+}
+input + .slider::before {
+ background-color: var(--primary);
+}
+input + .slider {
+ background-color: var(--secondary-container);
+}
+input:focus + .slider {
+ box-shadow: 0 0 1px var(--secondary-container);
+}
+input:checked + .slider:before {
+ transform: translateX(1.9em);
 }
