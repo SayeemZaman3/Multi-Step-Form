@@ -98,7 +98,7 @@ button, input{
   border: none;
   padding: 16px 32px;
 }
-#step3{
+#step4{
   display: block; /*  Temp */
 }
 .step h1{
@@ -291,6 +291,10 @@ input:checked + .slider:before {
   padding: 16px;
   align-items: center;
 }
+.checkbox .price{
+  color: var(--purple600);
+  margin-left: auto;
+}
 .checkbox input{
   grid-row: span 2;
   width: 20px;
@@ -312,11 +316,71 @@ input:checked + .slider:before {
 .checkbox div h4{
   color: var(--blue950);
 }
-.checkbox .price{
-  margin-left: auto;
-  color: var(--purple600);
-}
 .checkbox:has(input:checked){
   background: var(--blue50);
   border-color: var(--purple600)
+}
+
+/* Step 4 */
+.info{
+  background: var(--blue50);
+  padding: 16px;
+  border-radius: 8px;
+}
+.info h4{
+  font-family: Ubuntu-med;
+  font-weight: 500;
+  margin-top: 0;
+}
+.plan-info{
+  display: flex;
+  position: relative;
+  gap: 4px;
+}
+.plan-info h4{
+  color: var(--blue950);
+}
+.price{
+  margin-left: auto;
+}
+.plan-info .price{
+  color: var(--blue950);
+  font-family: Ubuntu-bold;
+  font-weight: 700;
+  position: relative;
+  top: 8px;
+}
+.info a{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+hr{
+  background: none;
+  border: 1px solid var(--blue100);
+  margin: 16px 0;
+}
+#addon-info{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+#addon-info .price{
+  color: var(--blue950);
+  font-weight: 500;
+  font-family: Ubuntu-med;
+}
+#addon-info div{
+  display: flex;
+}
+#total{
+  padding: 20px 16px;
+  display: flex;
+}
+#total-price{
+  margin: 0;
+  margin-left: auto;
+  color: var(--purple600);
+  font-weight: 700;
+  font-family: Ubuntu-bold;
 }
