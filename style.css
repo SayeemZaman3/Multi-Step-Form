@@ -6,7 +6,7 @@
   --red500: hsl(354, 84%, 57%);
   --grey500: hsl(231, 11%, 63%);
   --purple200: hsl(229, 24%, 87%);
-  --Blue100: hsl(218, 100%, 97%);
+  --blue100: hsl(218, 100%, 97%);
   --blue50: hsl(231, 100%, 99%);
 }
 @font-face {
@@ -20,4 +20,75 @@
 @font-face {
   font-family: Ubuntu-bold;
   src: url(assets/fonts/Ubuntu-Bold.ttf);
+}
+
+/* Body */
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
+  background: var(--blue100);
+  font-family: Ubuntu-reg;
+}
+#container{
+  background: #fff;
+  width: 70%;
+  min-height: 450px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr;
+  padding: 16px;
+}
+
+/* Steps */
+#steps-container{
+  background: url(assets/images/bg-sidebar-desktop.svg) no-repeat center / 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 12px;
+  max-height: 100%;
+  margin: 0;
+  padding: 32px;
+  border-radius: 8px;
+}
+.progress{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 3fr;
+  gap: 0px;
+}
+.progress.active .stepNum{
+  background: var(--blue300);
+  border-color: var(--blue300);
+  color: var(--blue950);
+}
+.stepNum{
+  grid-row: span 2;
+  border: 1px solid var(--purple200);
+  border-radius: 100%;
+  display: inline-block;
+  width: 26px;
+  height: 26px;
+  text-align: center;
+  align-content: center;
+}
+.progress p{
+  color: var(--grey500);
+}
+.progress h4, p{
+  margin: 0;
+}
+
+
+/* Form */
+.step{
+  display: none;
+}
+
+/* Buttons */
+#nav{
+  display: none;
 }
