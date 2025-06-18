@@ -98,7 +98,7 @@ button, input{
   border: none;
   padding: 16px 32px;
 }
-#step2{
+#step3{
   display: block; /*  Temp */
 }
 .step h1{
@@ -276,4 +276,47 @@ input:focus + .slider {
 }
 input:checked + .slider:before {
  transform: translateX(1.9em);
+}
+
+/* Step 3 */
+#checkboxes{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.checkbox{
+  display: flex;
+  border: 1px solid var(--grey500);
+  border-radius: 4px;
+  padding: 16px;
+  align-items: center;
+}
+.checkbox input{
+  grid-row: span 2;
+  width: 20px;
+  height: 20px;
+  margin-right: 16px;
+  accent-color: var(--purple600);
+  appearance: none;
+  border: 1px solid var(--grey500);
+  border-radius: 4px;
+}
+.checkbox input:checked{
+  background: var(--purple600) url(assets/images/icon-checkmark.svg) no-repeat center center;
+  background-size: 60%;
+  border: none;
+}
+.checkbox h4{
+  margin: 2px 0;
+}
+.checkbox div h4{
+  color: var(--blue950);
+}
+.checkbox .price{
+  margin-left: auto;
+  color: var(--purple600);
+}
+.checkbox:has(input:checked){
+  background: var(--blue50);
+  border-color: var(--purple600)
 }
