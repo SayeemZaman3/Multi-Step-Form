@@ -277,6 +277,16 @@ input:focus + .slider {
 input:checked + .slider:before {
  transform: translateX(1.9em);
 }
+/* Yearly */
+.free{
+  display: none;
+}
+.radio .free.active{
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--blue950);
+}
 
 /* Step 3 */
 #checkboxes{
