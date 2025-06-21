@@ -98,8 +98,8 @@ button, input{
   border: none;
   padding: 16px 32px;
 }
-#step4{
-  display: block; /*  Temp */
+.step.active{
+  display: block
 }
 .step h1{
   margin: 8px 0;
