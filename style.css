@@ -154,6 +154,7 @@ label{
   color: var(--blue950);
   padding: 8px 0;
   display: grid;
+  grid-template-columns: 1fr 2fr;
   gap: 4px;
 }
 .field input{
@@ -164,6 +165,7 @@ label{
   color: var(--blue950);
   padding: 0 12px;
   font-family: Ubuntu-med;
+  grid-column: span 2;
 }
 .field input:focus{
   border: 1px solid var(--purple600);
@@ -172,8 +174,14 @@ label{
 .field.error input{
   border: 1px solid var(--red500);
 }
-.error{
+#step1 label{
+  margin-bottom: 0;
+}
+#step1 .error{
   color: var(--red500);
+  margin-left: auto;
+  display: none;
+  font-size: 12px;
 }
 
 /* Step 2 */

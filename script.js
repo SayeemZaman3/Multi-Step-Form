@@ -1,6 +1,7 @@
 // JavaScript
 
 // Current Step
+let error = true;
 let index = 1;
 $('#step1').addClass('active');
 
@@ -24,21 +25,6 @@ function navCheck() {
   updateCrumbs();
 }
 
-// Next
-$('#next').click(() => {
-  // Changes Current Step
-  if(index !== 4){
-    $('.step').removeClass('active');
-    $(`#step${++index}`).addClass('active');
-  }
-  
-  navCheck();
-  
-  // Confirm Button
-  if (index === 4) {
-    
-  }
-})
 
 // Back
 $('#back').click(() => {
@@ -122,3 +108,73 @@ function setPrice(type) {
   $('#addon2-price').text(`+${prices[type].addons.addon2}/mo`);
   $('#addon3-price').text(`+${prices[type].addons.addon3}/mo`);
 }
+
+
+// Form Validaion
+// Step 1
+let locks = {
+  lock1: false,
+  lock2: false,
+  lock3: false
+}
+
+$('#next').click(() => {
+  
+  // Email
+  const validEmail = $('#email').val().match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
+  
+  !validEmail ?
+    (setError($('#email'), 'This is not a valid email'), locks.lock1 = true) :
+    locks.lock1 = false;
+  
+  // Phone Number
+  const validPhone = $('#phone').val().match(/^\+?[0-9]{7,15}$/);
+  
+  !validPhone ?
+    (setError($('#phone'), 'This is not a valid phone number'), locks.lock2 = true) :
+    locks.lock2 = false;
+  
+  // Checks if empty
+  const inputs = $('#step1 input').toArray();
+  
+  inputs.some(input => {
+    if (!$(input).val().trim()) {
+      setError($(input), 'This field is required');
+    }
+  });
+  let filled = inputs.every((input) => $(input).val());
+  locks.lock3 = !filled;
+  
+  error = locks.lock1 || locks.lock2 || locks.lock3;
+});
+
+// Resets Error
+$('input').click(() => {
+  $('.error').css('display', 'none');
+})
+
+// Error Setter
+function setError(input, error) {
+  $(input).siblings('.error')
+    .css('display', 'block')
+    .text(error);
+    
+  error = true;
+}
+
+
+// Next
+$('#next').click(() => {
+  // Changes Current Step
+  if (index !== 4 && !error) {
+    $('.step').removeClass('active');
+    $(`#step${++index}`).addClass('active');
+  }
+  
+  navCheck();
+  
+  // Confirm Button
+  if (index === 4) {
+    
+  }
+})
