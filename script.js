@@ -25,14 +25,31 @@ function navCheck() {
   updateCrumbs();
 }
 
+// Next
+function next() {
+  if (index !== 4) {
+    $('.step').removeClass('active');
+    $(`#step${++index}`).addClass('active');
+  }
+  
+  navCheck();
+  
+  // Confirm Button
+  if (index === 4) {
+    
+  }
+}
+
 
 // Back
-$('#back').click(() => {
+function back(){
   $('.step').removeClass('active');
   index--;
   $(`#step${index}`).addClass('active');
   navCheck()
-})
+}
+$('#back').click(back);
+
 navCheck()
 
 
@@ -146,6 +163,8 @@ $('#next').click(() => {
   locks.lock3 = !filled;
   
   error = locks.lock1 || locks.lock2 || locks.lock3;
+  validateStep2();
+  !error ? next() : null;
 });
 
 // Resets Error
@@ -163,18 +182,15 @@ function setError(input, error) {
 }
 
 
-// Next
-$('#next').click(() => {
-  // Changes Current Step
-  if (index !== 4 && !error) {
-    $('.step').removeClass('active');
-    $(`#step${++index}`).addClass('active');
+// Step 2
+function validateStep2(){
+  if($('#step2').hasClass('active')){
+    if ($('input[name="plan"]:checked').length === 0) {
+      $('#step2-err').css('display', 'block');
+     
+      back();
+    } else {
+      $('#step2-err').css('display', 'none');
+    }
   }
-  
-  navCheck();
-  
-  // Confirm Button
-  if (index === 4) {
-    
-  }
-})
+}

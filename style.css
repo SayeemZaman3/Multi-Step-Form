@@ -99,7 +99,7 @@ button, input{
   padding: 16px 32px;
 }
 .step.active{
-  display: block
+  display: block;
 }
 .step h1{
   margin: 8px 0;
@@ -177,12 +177,13 @@ label{
 #step1 label{
   margin-bottom: 0;
 }
-#step1 .error{
+:is(#step1, #step2) .error{
   color: var(--red500);
   margin-left: auto;
   display: none;
   font-size: 12px;
 }
+
 
 /* Step 2 */
 /* Plan */
@@ -215,6 +216,10 @@ input[type="radio"]:checked + .content{
   font-family: Ubuntu-reg;
   font-weight: 400;
   margin: 2px 0;
+}
+#step2 .error{
+  margin: 0 auto 0 auto;
+  font-size: 14px;
 }
 /* Billing */
 #billing{
