@@ -26,6 +26,7 @@ function navCheck() {
 }
 
 // Next
+$('#next').click(next) // Temp
 function next() {
   if (index !== 4) {
     $('.step').removeClass('active');
@@ -72,61 +73,9 @@ $('form').submit((e) => {
   e.preventDefault();
 })
 
-// Monthly & Yearly
-let prices = {
-  monthly: {
-    plan: {
-      arcade: '9',
-      advanced: '12',
-      pro: '15'
-    },
-    addons: {
-      addon1: '1',
-      addon2: '2',
-      addon3: '2'
-    },
-  },
-  yearly: {
-    plan: {
-      arcade: '90',
-      advanced: '120',
-      pro: '150'
-    },
-    addons: {
-      addon1: '10',
-      addon2: '20',
-      addon3: '20'
-    },
-  }
-};
-
-// Checked = Yearly, Unchecked = Monthly
-$(document).click(typeCheck);
-
-function typeCheck(){
-  $('.switch input').is(':checked')
-    ? setPrice('yearly') : setPrice('monthly');
-}
-typeCheck()
-
-function setPrice(type) {
-  // Plan
-  $('#arcadePrice').text(`+${prices[type].plan.arcade}/mo`);
-  $('#advancedPrice').text(`+${prices[type].plan.advanced}/mo`);
-  $('#proPrice').text(`+${prices[type].plan.pro}/mo`);
-  
-  // Discount
-  type === 'yearly' ?
-  $('.free').addClass('active') :
-  $('.free').removeClass('active');
-  
-  // Add-ons
-  $('#addon1-price').text(`+${prices[type].addons.addon1}/mo`);
-  $('#addon2-price').text(`+${prices[type].addons.addon2}/mo`);
-  $('#addon3-price').text(`+${prices[type].addons.addon3}/mo`);
-}
 
 
+/*
 // Form Validaion
 // Step 1
 let locks = {
@@ -194,3 +143,134 @@ function validateStep2(){
     }
   }
 }
+*/
+
+// Pricing
+
+// Data of prices
+let totalPrice = 0;
+let sel = {
+  plan: 0,
+  addon1: 0,
+  addon2: 0,
+  addon3: 0,
+}
+let prices = {
+  monthly: {
+    plan: {
+      arcade: 9,
+      advanced: 12,
+      pro: 15
+    },
+    addons: {
+      addon1: 1,
+      addon2: 2,
+      addon3: 2
+    },
+  },
+  yearly: {
+    plan: {
+      arcade: 90,
+      advanced: 120,
+      pro: 150
+    },
+    addons: {
+      addon1: 10,
+      addon2: 20,
+      addon3: 20
+    },
+  }
+};
+
+// Checked = Yearly, Unchecked = Monthly
+let billL = 'mo';
+
+function typeCheck() {
+  $('.switch input').is(':checked') ?
+    setPrice('yearly') : setPrice('monthly');
+}
+typeCheck()
+$('.switch input, .checkbox').click(typeCheck)
+
+// Sets price to step 2,3
+function setPrice(type) {
+  billL = type === 'monthly' ? 'mo' : 'yr';
+  
+  // Plan
+  $('#arcadePrice').text(`+${prices[type].plan.arcade}/${billL}`);
+  $('#advancedPrice').text(`+${prices[type].plan.advanced}/${billL}`);
+  $('#proPrice').text(`+${prices[type].plan.pro}/${billL}`);
+  
+  // Discount
+  type === 'yearly' ?
+    $('.free').addClass('active') :
+    $('.free').removeClass('active');
+    
+  // Add-ons
+  $('.checkbox .price').each((index) => {
+    $(`#addon${index + 1}-price`).text(`+$${prices[type].addons[`addon${index + 1}`]}/${billL}`);
+  })
+  
+  setAddonPrice(type);
+}
+
+// Set to finishing page
+
+$('input[name="plan"], .switch').click(setTopPrice);
+
+function setTopPrice() {
+  // Plan
+  let plan = $('input[name="plan"]:checked').val();
+  $('#planType').text(plan.charAt(0).toUpperCase() + plan.slice(1));
+  
+  // Billing
+  let billing = $('#bill-switch').is(':checked') ? 'yearly' : 'monthly';
+  $('#billType').text(`(${billing})`);
+  
+  // Price
+  let planPrice = prices[billing].plan[plan];
+  $('.plan-info .price').text(`$${planPrice}/${billL}`);
+  
+  sel.plan = parseInt(planPrice);
+}
+
+function setAddonsPrice() {
+  $('.checkbox input').each((index, addon) => {
+    $(addon).is(':checked') ?
+      setAddon(index+1, 'flex') :
+      setAddon(index+1, 'none');
+  });
+  
+  sel.addon1 || sel.addon2 || sel.addon3 ?
+    $('hr').css('display', 'block') : $('hr').css('display', 'none');
+}
+setAddonsPrice();
+$('.checkbox').click(setAddonsPrice);
+
+function setAddon(id, attr) {
+  $(`#addon${id}`).css('display', `${attr}`);
+}
+
+function setAddonPrice(type) {
+  $('#addon-info .price').each((index, element) => {
+    let price = prices[type].addons[`addon${index+1}`];
+    $(element).text(`$${price}/${billL}`);
+  })
+  
+  $('.checkbox input').each((i, addon) => {
+    if ($(addon).is(':checked')) {
+      sel[`addon${i+1}`] = billL === 'mo' ?
+        $(addon).val() : $(addon).val() * 10;
+    } else {
+      sel[`addon${i+1}`] = 0;
+    }
+  })
+}
+
+$('#next').click(() => {
+  totalPrice = Object.values(sel).reduce((sum, val) => sum + Number(val), 0);
+})
+
+$('#next').click(() => {
+  $('#total-price').text(`$${totalPrice}/${billL}`);
+})
