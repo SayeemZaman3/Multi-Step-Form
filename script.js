@@ -28,17 +28,28 @@ function navCheck() {
 // Next
 $('#next').click(next) // Temp
 function next() {
-  if (index !== 4) {
+  // Confirm Button
+  if (index === 4) {
+    $('.step, #nav').css('display', 'none');
+    $('#step5').css('display', 'flex');
+    
+    // For Desktop
+    if ($(window).width() > 799) {
+      $('form').css({
+        'display': 'flex',
+        'flex-direction': 'column',
+        'align-items': 'center',
+        'height': '100%'
+      })
+    }
+  } 
+  // Next
+  else {
     $('.step').removeClass('active');
     $(`#step${++index}`).addClass('active');
   }
   
   navCheck();
-  
-  // Confirm Button
-  if (index === 4) {
-    
-  }
 }
 
 

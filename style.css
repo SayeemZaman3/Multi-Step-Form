@@ -406,3 +406,20 @@ hr{
   font-weight: 700;
   font-family: Ubuntu-bold;
 }
+
+/* Final Step */
+#step5{
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  line-height: 1.5;
+}
+#step5 img {
+  width: 64px;
+}
+@media (min-width: 801px) {
+  #step5{
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+}

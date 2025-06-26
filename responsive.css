@@ -113,6 +113,13 @@
   .step{
     padding: 16px 22px 32px 22px;
   }
+  #step5{
+    top: 50%;
+    height: 65%;
+    display: center;
+    justify-content: center;
+    flex-direction: column;
+  }
 }
 @media (max-width: 720px) {
   .checkbox p{
