@@ -23,6 +23,9 @@
 }
 
 /* Body */
+*{
+  transition: all 0.3s;
+}
 body{
   display: flex;
   justify-content: center;
@@ -44,6 +47,9 @@ body{
   padding: 16px;
   border-radius: 8px;
   box-shadow: 2px 2px 12px var(--purple200);
+}
+.checkbox, .radio, input, button{
+  cursor: pointer;
 }
 
 /* Steps */
@@ -198,6 +204,9 @@ label{
   border-radius: 8px;
   padding: 12px;
 }
+.radio .content:hover{
+  border-color: var(--purple600);
+}
 input[type="radio"]:checked + .content{
   border-color: var(--purple600);
   background: var(--blue50);
@@ -311,6 +320,9 @@ input:checked + .slider:before {
   border-radius: 4px;
   padding: 16px;
   align-items: center;
+}
+.checkbox:hover{
+  border-color: var(--purple600);
 }
 .checkbox .price{
   color: var(--purple600);

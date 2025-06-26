@@ -26,7 +26,7 @@ function navCheck() {
 }
 
 // Next
-$('#next').click(next) // Temp
+$('#next').click(next)
 function next() {
   // Confirm Button
   if (index === 4) {
@@ -86,7 +86,6 @@ $('form').submit((e) => {
 
 
 
-/*
 // Form Validaion
 // Step 1
 let locks = {
@@ -95,21 +94,30 @@ let locks = {
   lock3: false
 }
 
+
 $('#next').click(() => {
   
   // Email
   const validEmail = $('#email').val().match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
   
-  !validEmail ?
-    (setError($('#email'), 'This is not a valid email'), locks.lock1 = true) :
+  if (validEmail){
     locks.lock1 = false;
+  } else {
+    setError($('#email'), 'This is not a valid email')
+    locks.lock1 = true
+    $('#email').css('border-color', 'var(--red500)')
+  }
   
   // Phone Number
   const validPhone = $('#phone').val().match(/^\+?[0-9]{7,15}$/);
   
-  !validPhone ?
-    (setError($('#phone'), 'This is not a valid phone number'), locks.lock2 = true) :
+  if(validPhone){
     locks.lock2 = false;
+  } else {
+    setError($('#phone'), 'This is not a valid phone number');
+    locks.lock2 = true;
+    $('#phone').css('border-color', 'var(--red500)');
+  }
   
   // Checks if empty
   const inputs = $('#step1 input').toArray();
@@ -117,10 +125,12 @@ $('#next').click(() => {
   inputs.some(input => {
     if (!$(input).val().trim()) {
       setError($(input), 'This field is required');
+      $(input).css('border-color', 'var(--red500)')
     }
   });
   let filled = inputs.every((input) => $(input).val());
   locks.lock3 = !filled;
+  
   
   error = locks.lock1 || locks.lock2 || locks.lock3;
   validateStep2();
@@ -130,6 +140,7 @@ $('#next').click(() => {
 // Resets Error
 $('input').click(() => {
   $('.error').css('display', 'none');
+  $('input').css('border-color', 'var(--purple200)')
 })
 
 // Error Setter
@@ -154,7 +165,8 @@ function validateStep2(){
     }
   }
 }
-*/
+
+
 
 // Pricing
 
